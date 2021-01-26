@@ -1,0 +1,23 @@
+{
+  "name": "@peace/utils",
+  "version": "0.0.0",
+  "description": "工具集",
+  "keywords": [
+    "工具"
+  ],
+  "author": "<1650192445@qq.com>",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://10.8.30.22:7000"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
