@@ -2,18 +2,18 @@
 
 import Func from './src/func'
 import * as WebAPI from './src/webapi'
-import { AuthorizationCode } from './src/authCode'
 import { PinyinHelper } from './src/pinyin'
 import ActionHelper from './src/actionHelper'
 import ReducerHelper from './src/reducerHelper'
 import Constans from './src/constans'
 
-export {
-    Func,
-    WebAPI,
-    AuthorizationCode,
-    PinyinHelper,
-    ActionHelper,
-    ReducerHelper,
-    Constans
-}
+export { Func, WebAPI, PinyinHelper, ActionHelper, ReducerHelper, Constans }
+
+import { buildUrl, buildRoute, Request, RouteRequest } from './src/webapi'
+export { buildUrl, buildRoute, Request, RouteRequest }
+
+import { clearData, httpGet, httpPost, httpPut, httpDel, basicAction } from './src/actionHelper'
+export { clearData, httpGet, httpPost, httpPut, httpDel, basicAction }
+
+import { basicReducer } from './src/reducerHelper'
+export { basicReducer }

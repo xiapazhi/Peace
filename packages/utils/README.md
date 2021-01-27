@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-const utils = require('utils');
+const utils = require('@peace/utils');
 
 // TODO: DEMONSTRATE API
 ```
