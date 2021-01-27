@@ -1,0 +1,34 @@
+{
+  "name": "@peace/components",
+  "version": "0.0.1",
+  "description": "组件集",
+  "keywords": [
+    "组件"
+  ],
+  "author": "<1650192445@qq.com>",
+  "homepage": "https://github.com/xiapazhi/peace#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://10.8.30.22:7000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiapazhi/peace.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/xiapazhi/peace/issues"
+  },
+  "dependencies": {
+    "@peace/utils": "^0.0.2"
+  }
+}
