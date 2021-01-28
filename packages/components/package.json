@@ -1,6 +1,6 @@
 {
   "name": "@peace/components",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "组件集",
   "keywords": [
     "组件"
@@ -29,6 +29,6 @@
     "url": "https://github.com/xiapazhi/peace/issues"
   },
   "dependencies": {
-    "@peace/utils": "^0.0.5"
+    "@peace/utils": "^0.0.6"
   }
 }
