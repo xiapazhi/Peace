@@ -25,7 +25,7 @@
 
 ```
 import React, { useRef, useState } from 'react'
-import {  Form } from '$components'
+import { Form } from '@peace/components'
 
 ...
 	const _formRef = useRef(null)
@@ -77,7 +77,7 @@ import {  Form } from '$components'
 
 ```
 import React, { useRef, useState } from 'react'
-import {  Modal,Form } from '$components'
+import {  Modal,Form } from '@peace/components'
 
 ...
 
@@ -162,7 +162,7 @@ import {  Modal,Form } from '$components'
 示例：
 
 ```
-import { Search, Table, Form, Modal } from '$components'
+import { Search, Table, Form, Modal } from '@peace/components'
 ...
  const searchFormLists = [{ 
  		  field: 'name', 
@@ -178,10 +178,3 @@ import { Search, Table, Form, Modal } from '$components'
   />
 
 ```
-
-
-
-
-
-
-
