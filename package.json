@@ -5,15 +5,6 @@
     "lerna": "^3.22.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.3.0",
-    "immutable": "^4.0.0-rc.12",
-    "antd": "^4.7.2",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "perfect-scrollbar": "^1.5.0",
-    "moment": "^2.22.0",
-    "superagent": "^6.1.0",
-    "superagent-no-cache": "^0.1.1",
-    "react-cropper": "^2.1.4"
+    
   }
 }
