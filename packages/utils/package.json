@@ -23,6 +23,6 @@
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "superagent": "^6.1.0",
-    "superagent-no-cache": "^0.1.1",
+    "superagent-no-cache": "^0.1.1"
   }
 }
