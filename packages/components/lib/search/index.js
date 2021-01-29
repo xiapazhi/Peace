@@ -15,7 +15,6 @@ const { RangePicker } = DatePicker;
 const Search = (props) => {
     const [expand, setExpand] = useState(false);
     const [form] = Form.useForm();
-    const { colSpan } = props;
     //初始化表单数据
     const getinitialValues = () => {
         const { formList } = props;
@@ -34,74 +33,64 @@ const Search = (props) => {
         const formItemList = [];
         const { formList, showNumber, offset } = props;
         let showNum = showNumber ? showNumber : 3;
-        let offsetNum = offset ? offset : 0;
-        const span = Number.parseInt((24 - offsetNum) / showNum);
+        let customStyle = {
+            marginRight: 12,
+        }
         if (formList && formList.length > 0) {
             formList.forEach((item, index) => {
                 const { noLabel, label, field, type, placeholder, style, labelSpan, showTime, optionName, list, rules, itemProps } = item;
-                let num = 0;
-                if (index === 0 && offsetNum) {
-                    num = offsetNum;
-                }
+                let style_ = Object.assign({}, style || {}, customStyle)
                 switch (type) {
                     case 'TIME':
                         const TIMES = (
-                            <Col offset={num} span={labelSpan || span} key={`${field}-${index}`}>
-                                <FormItem label={label || '选择日期'} name={field} rules={rules}>
-                                    <DatePicker
-                                        getPopupContainer={(triggerNode) => triggerNode.parentNode}
-                                        //showTime={showTime ? showTime : false}
-                                        style={style ? style : {}}
-                                        placeholder={placeholder || '选择日期'}
-                                        format='YYYY-MM-DD'
-                                        {...itemProps}
-                                    />
-                                </FormItem>
-                            </Col>
+                            <FormItem label={label || '选择日期'} name={field} rules={rules} style={{ marginTop: 8 }}>
+                                <DatePicker
+                                    getPopupContainer={(triggerNode) => triggerNode.parentNode}
+                                    //showTime={showTime ? showTime : false}
+                                    style={style_}
+                                    placeholder={placeholder || '选择日期'}
+                                    format='YYYY-MM-DD'
+                                    {...itemProps}
+                                />
+                            </FormItem>
                         );
                         formItemList.push(TIMES);
                         break;
                     case 'RANGETIME':
                         const RANGETIMES = (
-                            <Col offset={num} span={labelSpan || span} key={`${field}-${index}`}>
-                                <FormItem label={label || '选择日期时间段'} name={field} rules={rules}>
-                                    <RangePicker
-                                        getPopupContainer={(triggerNode) => triggerNode.parentNode}
-                                        showTime={showTime ? showTime : false}
-                                        style={style ? style : {}}
-                                        //placeholder={placeholder || '选择日期时间段'}
-                                        format={showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'}
-                                        {...itemProps}
-                                    />
-                                </FormItem>
-                            </Col>
+                            <FormItem label={label || '选择日期时间段'} name={field} rules={rules} style={{ marginTop: 8 }}>
+                                <RangePicker
+                                    getPopupContainer={(triggerNode) => triggerNode.parentNode}
+                                    showTime={showTime ? showTime : false}
+                                    style={style_}
+                                    //placeholder={placeholder || '选择日期时间段'}
+                                    format={showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'}
+                                    {...itemProps}
+                                />
+                            </FormItem>
                         );
                         formItemList.push(RANGETIMES);
                         break;
                     case 'SELECT':
                         const SELECT = (
-                            <Col offset={num} span={labelSpan || span} key={`${field}-${index}`}>
-                                <FormItem label={label || '请选择'} name={field} rules={rules}>
-                                    <Select
-                                        style={style ? style : {}}
-                                        getPopupContainer={(triggerNode) => triggerNode.parentNode}
-                                        placeholder={placeholder || '请选择'}
-                                        {...itemProps}
-                                    >
-                                        {getOptionList(list, optionName)}
-                                    </Select>
-                                </FormItem>
-                            </Col>
+                            <FormItem label={label || '请选择'} name={field} rules={rules} style={{ marginTop: 8 }}>
+                                <Select
+                                    style={style_}
+                                    getPopupContainer={(triggerNode) => triggerNode.parentNode}
+                                    placeholder={placeholder || '请选择'}
+                                    {...itemProps}
+                                >
+                                    {getOptionList(list, optionName)}
+                                </Select>
+                            </FormItem>
                         );
                         formItemList.push(SELECT);
                         break;
                     default:
                         const INPUT = (
-                            <Col offset={num} span={labelSpan || span} key={`${field}-${index}`}>
-                                <FormItem label={noLabel ? '' : (label || '关键字')} name={field} rules={rules}>
-                                    <Input style={style ? style : {}} placeholder={placeholder || '请输入关键字'} {...itemProps} />
-                                </FormItem>
-                            </Col >
+                            <FormItem label={noLabel ? '' : (label || '关键字')} name={field} rules={rules} style={{ marginTop: 8 }}>
+                                <Input style={style ? style : {}} placeholder={placeholder || '请输入关键字'} {...itemProps} />
+                            </FormItem>
                         );
                         formItemList.push(INPUT);
                         break;
@@ -158,39 +147,37 @@ const Search = (props) => {
     return (
         <Form
             form={form}
+            layout='inline'
             name='smart_seal_search'
             className='smart-seal-search-form'
             onFinish={onFinish}
             initialValues={getinitialValues()}
             validateMessages={Constans.defaultValidateMessages}
         >
-            <Row gutter={16}>
-                <Col span={colSpan ? colSpan.label : 18}>
-                    <Row gutter={16}>{getFields()}</Row>
-                </Col>
-                <Col span={colSpan ? colSpan.button : 6}>
-                    <Space>
-                        <Button htmlType='submit' className='smart-seal-default-btn'>
-                            查询
+            {getFields()}
+            <Space style={{
+                marginTop: 8
+            }}>
+                <Button htmlType='submit' className='smart-seal-default-btn'>查询</Button>
+                {
+                    props.showRest && (
+                        <Button
+                            onClick={() => { form.resetFields(); }}
+                            className='smart-seal-default-btn'>
+                            重置
                         </Button>
-                        {props.showRest && (
-                            <Button
-                                onClick={() => { form.resetFields(); }}
-                                className='smart-seal-default-btn'>
-                                重置
-                            </Button>
-                        )}
-                        {props.formList.length > props.showNumber && (
-                            <a
-                                style={{ marginLeft: 8, fontSize: 12 }}
-                                onClick={() => { setExpand(!expand); }}>
-                                {expand ? <UpOutlined /> : <DownOutlined />} {expand ? '收起' : '展开'}
-                            </a>
-                        )}
-                    </Space>
-                </Col>
-            </Row>
-        </Form>
+                    )
+                }{
+                    props.formList.length > props.showNumber && (
+                        <a
+                            style={{ marginLeft: 8, fontSize: 12 }}
+                            onClick={() => { setExpand(!expand); }}>
+                            {expand ? <UpOutlined /> : <DownOutlined />} {expand ? '收起' : '展开'}
+                        </a>
+                    )
+                }
+            </Space>
+        </Form >
     );
 };
 
@@ -201,7 +188,6 @@ Search.propTypes = {
     offset: PropTypes.number, //设置第一个item的偏移值
     onSearch: PropTypes.func.isRequired, //查询提交函数
     showRest: PropTypes.bool, //是否显示重置按钮
-    colSpan: PropTypes.object // 搜索栏整体布局  默认 {label: 18 : button: 6}
 };
 
 export default Search;

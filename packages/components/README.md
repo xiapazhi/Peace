@@ -157,7 +157,6 @@ import {  Modal,Form } from '@peace/components'
  - offset
  - onSearch --  查询函数
  - showRest -- 是否重置按钮
- - colSpan --  搜索栏整体布局 ，{label: 18 : button: 6}
 
 示例：
 
@@ -174,7 +173,6 @@ import { Search, Table, Form, Modal } from '@peace/components'
      showNumber={2}
      formList={searchFormLists}
      onSearch={onSearchClick}
-     colSpan={{ label: 20, button: 3 }}
   />
 
 ```
