@@ -1,6 +1,6 @@
 {
   "name": "@peace/components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "组件集",
   "keywords": [
     "组件"
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
-    "@peace/utils": "^0.0.8",
+    "@peace/utils": "^0.0.9",
     "antd": "^4.7.2",
     "immutable": "^4.0.0-rc.12",
     "moment": "^2.22.0",
