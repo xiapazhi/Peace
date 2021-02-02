@@ -21,7 +21,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import { Constans, Func } from '@peace/utils';
-import { UploadOutlined, DownloadOutlined } from '@ant-design/icons';
+import { UploadOutlined, DownloadOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import './index.less';
 
 const { RangePicker } = DatePicker;
