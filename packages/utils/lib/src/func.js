@@ -34,4 +34,10 @@ export default class Func {
             return judgeRslt
         }
     }
+
+    static selectFilterOption(input, option) {
+        let v = input.toLowerCase();
+        let src = option.children.toLowerCase();
+        return src.includes(v) || PinyinHelper.isPinyinMatched(src, v);
+    }
 };

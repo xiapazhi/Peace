@@ -16,10 +16,11 @@ import {
     TreeSelect,
     message,
     Tooltip,
-    Transfer
+    Transfer,
+    Space
 } from 'antd';
 import moment from 'moment';
-import { Constans, PinyinHelper } from '@peace/utils';
+import { Constans, Func } from '@peace/utils';
 import { UploadOutlined, DownloadOutlined } from '@ant-design/icons';
 import './index.less';
 
@@ -287,11 +288,12 @@ const Form = forwardRef((props, ref) => {
                             allowClear
                             showSearch
                             optionFilterProp='children'
-                            filterOption={(input, option) => {
-                                let v = input.toLowerCase();
-                                let src = option.children.toLowerCase();
-                                return src.includes(v) || PinyinHelper.isPinyinMatched(src, v);
-                            }}
+                            filterOption={(input, option) => Func.selectFilterOption(input, option)}
+                            // filterOption={(input, option) => {
+                            //     let v = input.toLowerCase();
+                            //     let src = option.children.toLowerCase();
+                            //     return src.includes(v) || PinyinHelper.isPinyinMatched(src, v);
+                            // }}
                             getPopupContainer={(triggerNode) => triggerNode.parentNode}
                             {...itemProps}
                         >
@@ -492,6 +494,57 @@ const Form = forwardRef((props, ref) => {
                             })
                         }
                     </AntdForm.Item>)
+            },
+            //单个表单项动态增减
+            formDynamic: function () {
+                const { formItemLayout, maxNum = 10 } = opts.itemChildren
+                return (
+                    <AntdForm.List key={`dynamic-${id}`} name={id} rules={rules}  {...containerProps} >
+                        {(fields, { add, remove }, { errors }) => (
+                            <div>
+                                {fields.map((field, index) => (
+                                    <AntdForm.Item
+                                        {...formItemLayout}
+                                        required={false}
+                                        key={field.key}
+                                    >
+                                        <Space>
+                                            <AntdForm.Item
+                                                {...field}
+                                                {...formItemLayout}
+                                                key={`${field.key}-index`}
+                                                validateTrigger={['onChange', 'onBlur']}
+                                                rules={opts.itemChildren.rules}
+                                                noStyle
+                                            >
+                                                {opts.itemChildren.component}
+                                            </AntdForm.Item>
+                                            {
+                                                index === 0 ? <Button
+                                                    type="primary"
+                                                    onClick={() => { if (fields.length > maxNum) { message.warning(`数量超过上限`) } else add() }}
+                                                    icon={<PlusOutlined />}
+                                                /> : null}
+                                            {
+                                                index !== 0 && fields.length > 1 ? (
+                                                    <Button
+                                                        type="dashed"
+                                                        onClick={() => remove(field.name)}
+                                                        icon={<MinusOutlined />}
+                                                    />
+                                                ) : null
+                                            }
+                                        </Space>
+                                    </AntdForm.Item>
+                                ))}
+                                <AntdForm.Item>
+                                    <AntdForm.ErrorList errors={errors} />
+                                </AntdForm.Item>
+                            </div>
+                        )
+                        }
+                    </AntdForm.List >
+                )
             }
         };
 

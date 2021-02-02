@@ -7,8 +7,9 @@ import ActionHelper from './src/actionHelper'
 import ReducerHelper from './src/reducerHelper'
 import Constans from './src/constans'
 import Region from './src/region'
+import { sort } from './src/smartSort'
 
-export { Func, WebAPI, PinyinHelper, ActionHelper, ReducerHelper, Constans, Region as region }
+export { Func, WebAPI, PinyinHelper, ActionHelper, ReducerHelper, Constans, Region as region, sort }
 
 import { buildUrl, buildRoute, Request, RouteRequest } from './src/webapi'
 export { buildUrl, buildRoute, Request, RouteRequest }
