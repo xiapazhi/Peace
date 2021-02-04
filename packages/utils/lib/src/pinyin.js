@@ -121,4 +121,4 @@ class PinyinHelper {
     }
 }
 
-export { PinyinHelper, Pinyin };
+export { PinyinHelper };
