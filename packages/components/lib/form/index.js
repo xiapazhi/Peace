@@ -17,7 +17,8 @@ import {
     message,
     Tooltip,
     Transfer,
-    Space
+    Space,
+    Checkbox
 } from 'antd';
 import moment from 'moment';
 import { Constans, Func } from '@peace/utils';
@@ -270,7 +271,6 @@ const Form = forwardRef((props, ref) => {
                     </AntdForm.Item>
                 );
             },
-
             formText: function () {
                 return (
                     <AntdForm.Item key={id} name={id} label={label} rules={rules} {...formItemLayout} {...containerProps}>
@@ -278,22 +278,23 @@ const Form = forwardRef((props, ref) => {
                     </AntdForm.Item>
                 );
             },
-
+            formCheckbox: function () {
+                return (
+                    <AntdForm.Item key={id} name={id} label={label} rules={rules} {...formItemLayout} {...containerProps}>
+                        <Checkbox  {...itemProps} />
+                    </AntdForm.Item>
+                );
+            },
             formSelect: function () {
                 return (
                     <AntdForm.Item key={id} name={id} label={label} rules={rules} {...formItemLayout} {...containerProps}>
                         <Select
                             getPopupContainer
-                            placeholder={placeholder}
+                            placeholder={`请选择${placeholder}`}
                             allowClear
                             showSearch
                             optionFilterProp='children'
                             filterOption={(input, option) => Func.selectFilterOption(input, option)}
-                            // filterOption={(input, option) => {
-                            //     let v = input.toLowerCase();
-                            //     let src = option.children.toLowerCase();
-                            //     return src.includes(v) || PinyinHelper.isPinyinMatched(src, v);
-                            // }}
                             getPopupContainer={(triggerNode) => triggerNode.parentNode}
                             {...itemProps}
                         >

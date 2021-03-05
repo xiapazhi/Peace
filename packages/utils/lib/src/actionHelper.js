@@ -54,21 +54,26 @@ export function httpGet(dispatch, opts) {
  *      success         String              成功
  *      error           String              失败
  *  callback            Function            对于返回数据预处理的回调，返回值作为 action 的 payload 的 data 即 reducer 的 data 返回（所以记得写 return 哦！）
+ *  msgSuccessShow      Boolean             请求成功提示信息展示，默认true
  */
 export function httpPost(dispatch, opts) {
-    const { url, data, query, actionType, msg, callback } = opts;
+    const { url, data, query, actionType, msg, callback, msgSuccessShow = true } = opts;
     const actionTypes = Func.formatActionTypes(actionType);
     dispatch({ type: actionTypes.REQUESTING });
     return Request.post(url, data || {}, query).then(res => {
         if (callback) {
             res = callback(res)
         }
-        return dispatch({
+        const options = {
             type: actionTypes.REQUEST_SUCCESS,
             success: true,
             payload: { data: res, message: msg.success },
             done: msg.success
-        });
+        };
+        if (!msgSuccessShow) {
+            delete options["done"];
+        }
+        return dispatch(options);
     }, err => errCallback(err, dispatch, actionTypes, msg));
 }
 

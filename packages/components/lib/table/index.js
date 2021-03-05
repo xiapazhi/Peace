@@ -88,7 +88,7 @@ class Table extends Component {
             className: 'fs-table-column-action',
             render: (text, record) => {
                 let actions = this.props.actions;
-                if (record.actions) actions = actions.filter((act) => record.actions.includes(act.key));
+                if (record && record.actions) actions = actions.filter((act) => record.actions.includes(act.key));
 
                 return (
                     <span style={{ whiteSpace: 'normal' }}>

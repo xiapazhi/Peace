@@ -1,4 +1,5 @@
 'use strict';
+import { PinyinHelper } from './pinyin';
 
 export default class Func {
     static formatActionTypes(actionTypes) {

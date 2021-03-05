@@ -28,7 +28,7 @@ class MultiSelect extends Component {
         this.setState({ checkedOpts: checkedOpts });
     }    
 
-    UNSAFE_componentWillMount(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.options != nextProps.options) {
             this.setState({ checkedOpts: [] });
         }
@@ -72,7 +72,7 @@ class MultiSelect extends Component {
         return (
             <div style={{ display: 'inline-block' }}>
                 <Popover placement="bottom" trigger="click"
-                    content={<Menu checkedOpts={this.state.checkedOpts} onChange={this.triggerChange} {...this.props} />}
+                    content={<Menu checkedOpts={this.state.checkedOpts} {...this.props} onChange={this.triggerChange} />}
                     title="" style={{ width: 400 }}>
                     <Button style={style || { width: 280 }}>{this.renderButtonText()}</Button>
                 </Popover>

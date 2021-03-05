@@ -14,6 +14,8 @@ const ImageCropper = (props) => {
     useEffect(() => {
         if (originalImage) {
             setImage(originalImage)
+        } else {
+            setLoading(false)
         }
     }, [originalImage])
 
