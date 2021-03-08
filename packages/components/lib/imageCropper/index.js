@@ -49,9 +49,15 @@ const ImageCropper = (props) => {
         reader.readAsDataURL(file);
     };
 
-    const submit = () => {
-        const dataUrl = cropper.getCroppedCanvas().toDataURL('image/png')
-        let arr = dataUrl.split(','),
+    const cropperOk = () => {
+        let quality = 0.8
+        let dataUrl = cropper.getCroppedCanvas()
+        let base64 = dataUrl.toDataURL('image/png')
+        while (base64.length / 1024 > 240) {
+            quality -= 0.015;
+            base64 = dataUrl.toDataURL("image/jpeg", quality);
+        }
+        let arr = base64.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]),
             n = bstr.length,
@@ -60,10 +66,15 @@ const ImageCropper = (props) => {
             u8arr[n] = bstr.charCodeAt(n);
         }
         let blob = new Blob([u8arr], { type: mime });
+        console.log('size', blob.size);
         let fileData = new FormData();
         fileData.append('image', blob, "image.png");
         handleCropperOk(fileData)
+    }
+
+    const submit = () => {
         setLoading(true)
+        setTimeout(cropperOk, 9)
     }
 
     return (
