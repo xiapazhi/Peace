@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import { Checkbox, Input } from 'antd';
-// import Ps from 'perfect-scrollbar';
+import Ps from 'perfect-scrollbar';
 import { PinyinHelper } from '@peace/utils';
 const Search = Input.Search;
 
@@ -13,10 +12,9 @@ export default class Menu extends Component {
         }
     }
 
-    // componentDidMount() {
-    //Uncaught TypeError: _perfectScrollbar2.default.initialize is not a function 注释先
-    //     Ps.initialize(findDOMNode(this.refs.options));
-    // }
+    componentDidMount() {
+        new Ps('#options', { suppressScrollX: true });
+    }
 
     onSingleChange = (e) => {
         if (e.target.checked) {
@@ -136,7 +134,7 @@ export default class Menu extends Component {
                         />
                         : ''
                 }
-                <div ref="options" style={{ minWidth: style.width || 280, paddingRight: 20, height: selectHeight, position: 'relative', fontSize: 22 }}>
+                <div id="options" style={{ minWidth: style.width || 280, paddingRight: 20, height: selectHeight, position: 'relative', fontSize: 22 }}>
                     <div style={{ marginRight: 20 }}>
 
                         {
