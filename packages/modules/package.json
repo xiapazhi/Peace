@@ -1,0 +1,45 @@
+{
+  "name": "@peace/modules",
+  "version": "0.0.19",
+  "description": "功能模块",
+  "keywords": [
+    "模块"
+  ],
+  "author": "YUAN21 <1650192445@qq.com>",
+  "homepage": "https://github.com/xiapazhi/Peace#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://10.8.30.22:7000/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiapazhi/Peace.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/xiapazhi/Peace/issues"
+  },
+  "devDependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "perfect-scrollbar": "^1.5.0",
+    "react": "^17.0.0",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.3.0",
+    "@peace/components": "^0.0.19",
+    "@peace/utils": "^0.0.19",
+    "antd": "^4.7.2"
+  }
+}
