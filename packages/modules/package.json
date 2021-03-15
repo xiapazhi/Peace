@@ -1,6 +1,6 @@
 {
   "name": "@peace/modules",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "功能模块",
   "keywords": [
     "模块"
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
-    "@peace/components": "^0.0.20",
-    "@peace/utils": "^0.0.20",
+    "@peace/components": "^0.0.21",
+    "@peace/utils": "^0.0.21",
     "antd": "^4.7.2"
   }
 }
