@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { Menu } from 'antd'
 import { Func } from '@peace/utils'
 import { NotificationOutlined } from '@ant-design/icons';
+import { AuthorizationCode } from '$utils';
+
+const { AddAppNotice, UpdateAppNotice, DeleteAppNotice } = AuthorizationCode
 
 export function getNavItem(user, dispatch) {
-    const { AddAppNotice, UpdateAppNotice, DeleteAppNotice } = global.fs && global.fs.notification.AuthorizationCode || {}
     if (Func.judgeRights(AddAppNotice) || Func.judgeRights(UpdateAppNotice) || Func.judgeRights(DeleteAppNotice))
         return (
             <Menu.Item key="appMessage" icon={<NotificationOutlined />}>
